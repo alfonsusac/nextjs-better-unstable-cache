@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "ESNext",
     "declaration": true,
     "outDir": "./lib",
     "strict": true,
     // "noEmit": true,
     "esModuleInterop": true,
-    // "moduleResolution": "node",
+    "moduleResolution": "node",
     // "skipLibCheck": true,
     // "resolveJsonModule": true,
     // "isolatedModules": true,
