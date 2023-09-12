@@ -5,7 +5,7 @@ This version dedupe `unstable_cache()` using React's cache() while also
 providing useful logs.
 
 ```
-npm i better-unstable-cache
+npm i github:alfonsusac/nextjs-better-unstable-cache
 ```
 ```javascript
 import { memoize } from 'better-unstable-cache' 
