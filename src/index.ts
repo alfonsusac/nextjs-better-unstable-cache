@@ -22,7 +22,7 @@ export function memoize(
   const { // default values
     persist = true,
     duration = Infinity,
-    log = ['datacache', 'dedupe'],
+    log = [],
     revalidateTags = [],
     additionalCacheKey = []
   } = opts ?? {}
