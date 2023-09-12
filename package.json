@@ -1,0 +1,27 @@
+{
+  "name": "nextjs-unstable-cache",
+  "version": "0.0.1",
+  "description": "Improved version of unstable_cache with deduping and logging",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "type": "module",
+  "types": "lib/index.d.ts",
+  "keywords": [],
+  "author": "alfonsusac",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "next": "^13.4.19",
+    "react": "next",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.21"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
