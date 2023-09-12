@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-unstable-cache",
+  "name": "nextjs-better-unstable-cache",
   "version": "0.0.1",
   "description": "Improved version of unstable_cache with deduping and logging",
   "license": "MIT",
