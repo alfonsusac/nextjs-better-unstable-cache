@@ -1,5 +1,11 @@
 # nextjs-better-unstable-cache
 
+## 0.1.3
+
+### Patch Changes
+
+- fixed out folder not in npm
+
 ## 0.1.2
 
 ### Patch Changes
