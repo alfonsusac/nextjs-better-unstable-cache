@@ -3,28 +3,30 @@ import { unstable_cache } from "next/cache"
 // @ts-expect-error
 import { cache } from "react"
 
-type MemoizePropType = {
+type Callback<Parameters extends unknown[], ReturnType> = (...args: Parameters) => ReturnType
+
+type MemoizePropType<Parameters extends unknown[]> = {
   persist?: boolean,
   duration?: number,
   log?: ('dedupe' | 'datacache')[],
-  revalidateTags?: string[],
-  additionalCacheKey?: string[]
+  revalidateTags?: ((...params: Parameters) => string[]) | string[],
+  additionalCacheKey?: ((...params: Parameters) => string[]) | string[]
 }
 
 /**   ###  MEMOIZE: unstable_cache() + cache()
          A way to generalize the data caching function in Next.js     
 **/
 
-export function memoize(
-  cb: Function,
-  opts?: MemoizePropType
+export function memoize<P extends unknown[], R>(
+  cb: Callback<P, R>,
+  opts?: MemoizePropType<P>
 ) {
   const { // default values
     persist = true,
     duration = Infinity,
     log = [],
-    revalidateTags = [],
-    additionalCacheKey = []
+    revalidateTags: revalidateTagsFn,
+    additionalCacheKey: additionalCacheKeyFn
   } = opts ?? {}
   const logDataCache = log.includes('datacache')
   const logDedupe = log.includes('dedupe')
@@ -34,10 +36,20 @@ export function memoize(
   renderCacheHit = false
 
   const cachedFn = cache(
-    async (...args: any[]) => {
+    async (...args: P) => {
       renderCacheHit = true
       if (persist) {
         // Initialize unstable_cache
+        const additionalCacheKey =
+          additionalCacheKeyFn ?
+            typeof additionalCacheKeyFn === 'function' ?
+              additionalCacheKeyFn(...args) : additionalCacheKeyFn
+            : []
+        const revalidateTags =
+          revalidateTagsFn ?
+            typeof revalidateTagsFn === 'function' ?
+              revalidateTagsFn(...args) : revalidateTagsFn
+            : [];
         const cacheKey = [cb.toString(), JSON.stringify(args), ...additionalCacheKey]
         const nextOpts = {
           revalidate: duration,
@@ -83,7 +95,7 @@ export function memoize(
 
     }
   )
-  return async (...args: any) => {
+  return async (...args: P) => {
 
     if (logDedupe) {
       let audit2 = new Audit()
