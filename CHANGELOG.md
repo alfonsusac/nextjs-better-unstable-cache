@@ -1,5 +1,11 @@
 # nextjs-better-unstable-cache
 
+## 0.1.1
+
+### Patch Changes
+
+- Removed output folder from git
+
 ## 0.1.0
 
 ### Minor Changes

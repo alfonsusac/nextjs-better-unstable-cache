@@ -1,16 +1,30 @@
 {
   "name": "nextjs-better-unstable-cache",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Improved version of unstable_cache with deduping and logging",
+  "keywords": [
+    "nextjs",
+    "next",
+    "cache",
+    "unstable_cache",
+    "data cache",
+    "memoization"
+  ],
+  "homepage": "https://github.com/alfonsusac/nextjs-better-unstable-cache",
+  "bugs": {
+    "url": "https://github.com/alfonsusac/nextjs-better-unstable-cache/issues"
+  },
+  "author": {
+    "name": "alfonsusac",
+    "url": "https://github.com/alfonsusac"
+  },
   "license": "MIT",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib/**/*"
   ],
   "type": "module",
-  "types": "lib/index.d.ts",
-  "keywords": [],
-  "author": "alfonsusac",
   "dependencies": {
     "chalk": "^4.1.2",
     "next": "^13.4.19",
