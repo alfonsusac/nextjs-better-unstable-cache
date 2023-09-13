@@ -1,6 +1,6 @@
 {
   "name": "nextjs-better-unstable-cache",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Improved version of unstable_cache with deduping and logging",
   "license": "MIT",
   "main": "lib/index.js",
@@ -18,6 +18,7 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.2",
     "@types/react": "^18.2.21"
   },
   "scripts": {
