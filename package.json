@@ -1,6 +1,6 @@
 {
   "name": "nextjs-better-unstable-cache",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Improved version of unstable_cache with deduping and logging",
   "keywords": [
     "nextjs",
