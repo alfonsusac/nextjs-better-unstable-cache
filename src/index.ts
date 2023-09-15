@@ -9,6 +9,7 @@ type MemoizePropType<Parameters extends unknown[]> = {
   persist?: boolean,
   duration?: number,
   log?: ('dedupe' | 'datacache' | 'verbose')[],
+  logid?: string
   revalidateTags?: ((...params: Parameters) => string[]) | string[],
   additionalCacheKey?: ((...params: Parameters) => string[]) | string[]
 }
@@ -30,6 +31,8 @@ export function memoize<P extends unknown[], R>(
   } = opts ?? {}
   const logDataCache = log.includes('datacache')
   const logDedupe = log.includes('dedupe')
+  const logVerbose = log.includes('verbose')
+  const logID = opts?.logid ? `${opts.logid} ` : ''
 
   let oldData: any
   let renderCacheHit: boolean
@@ -68,12 +71,13 @@ export function memoize<P extends unknown[], R>(
           const time = audit!.getSec()
           const isSame = oldData === data
           console.log(
-            `${chalk.hex('#AA7ADB').bold("Data Cache")} - ` +
-            `${cb.name} ${chalk.hex('#AA7ADB').bold(dataCacheMiss ? "MISS" : "HIT")} ` +
-            `${chalk.hex('A0AFBF')(time.toPrecision(3) + 's')} ` +
-            `${chalk.hex('#AA7ADB').bold(dataCacheMiss ? isSame ? 'background-revalidation' : 'on-demand revalidation' : "")} ` +
-            ''
+              `${chalk.hex('AA7ADB').bold("Data Cache")} - `
+            + `${chalk.hex('A0AFBF')(`${logID}${cb.name}`)} ${chalk.hex('#AA7ADB').bold(dataCacheMiss ? "MISS" : "HIT")} `
+            + `${chalk.hex('A0AFBF')(time.toPrecision(3) + 's')} `
+            + `${chalk.hex('AA7ADB').bold(dataCacheMiss ? isSame ? 'background-revalidation' : 'on-demand revalidation' : "")} `
           )
+          if (logVerbose)
+            console.log(`${chalk.hex('6A7C8E').bold(` └ ${cb.name ?? "Anon Func"} ${JSON.stringify(args)}`)}`)
           oldData = data
           return data
 
@@ -102,10 +106,9 @@ export function memoize<P extends unknown[], R>(
       let data = await cachedFn(...args)
       let time = audit2.getSec()
       console.log(
-        `${chalk.hex('#FFB713').bold("Memoization")} - ` +
-        `${cb.name} ${chalk.hex('#FFC94E').bold(renderCacheHit ? "MISS" : "HIT")} ` +
-        `${chalk.hex('A0AFBF')(time.toPrecision(3) + 's')} ` +
-        ''
+          `${chalk.hex('#FFB713').bold("Memoization")} - `
+        + `${chalk.hex('A0AFBF')(`${logID}${cb.name}`)} ${chalk.hex('#FFC94E').bold(renderCacheHit ? "MISS" : "HIT")} `
+        + `${chalk.hex('A0AFBF')(time.toPrecision(3) + 's')} `
       )
       renderCacheHit = false
       return data
