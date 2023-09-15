@@ -1,5 +1,11 @@
 # nextjs-better-unstable-cache
 
+## 0.1.5
+
+### Patch Changes
+
+- Improve Logging: recolor and prints param
+
 ## 0.1.4
 
 ### Patch Changes
