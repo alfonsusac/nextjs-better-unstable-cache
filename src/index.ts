@@ -3,12 +3,12 @@ import { unstable_cache } from "next/cache"
 // @ts-expect-error
 import { cache } from "react"
 
-type Callback<Parameters extends unknown[], ReturnType> = (...args: Parameters) => ReturnType
+type Callback<Parameters extends unknown[], ReturnType> = (...args: Parameters) => ReturnType | Promise<ReturnType>
 
 type MemoizePropType<Parameters extends unknown[]> = {
   persist?: boolean,
   duration?: number,
-  log?: ('dedupe' | 'datacache')[],
+  log?: ('dedupe' | 'datacache' | 'verbose')[],
   revalidateTags?: ((...params: Parameters) => string[]) | string[],
   additionalCacheKey?: ((...params: Parameters) => string[]) | string[]
 }
