@@ -1,5 +1,11 @@
 # nextjs-better-unstable-cache
 
+## 0.1.7
+
+### Patch Changes
+
+- fix return type
+
 ## 0.1.6
 
 ### Patch Changes

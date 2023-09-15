@@ -1,7 +1,8 @@
 import chalk from "chalk"
 import { unstable_cache } from "next/cache"
-// @ts-expect-error
 import { cache } from "react"
+//@ts-expect-error
+import type { cache as cacheType } from "react/canary.d.ts"
 
 type Callback<Parameters extends unknown[], ReturnType> = (...args: Parameters) => ReturnType | Promise<ReturnType>
 
