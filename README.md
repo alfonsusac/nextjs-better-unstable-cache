@@ -8,7 +8,7 @@ providing useful logs.
 npm i nextjs-better-unstable-cache
 ```
 ```javascript
-import { memoize } from 'better-unstable-cache' 
+import { memoize } from 'nextjs-better-unstable-cache' 
 
 const cachedFn = memoize(
   async (slug: string) => {
