@@ -23,7 +23,7 @@ const cachedFn = memoize(
     // For next's revalidateTags() purposes. 
     revalidateTags: (slug) => ['articles', slug], 
     // Enable logs to see timer or whether it triggers ODR or BR
-    logs: ['datacache', 'dedupe'],
+    log:['dedupe' , 'datacache' , 'verbose'],
     // Extra cache identifier to make cache unique from others
     additionalCacheKey: ['articles'],
 
