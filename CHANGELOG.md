@@ -1,5 +1,12 @@
 # nextjs-better-unstable-cache
 
+## 0.1.8
+
+### Patch Changes
+
+- Fixed typo in docs (#2) and added usage examples in docs (thanks @andrewkucz, @RuthwikReddy09)
+- Fixed logging for memoization. (#1) got miss and hit mixed up
+
 ## 0.1.7
 
 ### Patch Changes

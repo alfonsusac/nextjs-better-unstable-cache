@@ -34,5 +34,35 @@ const cachedFn = memoize(
     //   callbacks to retrieve the slug from the primary function 
   } 
 )
+
 ```
+
+## Usage
+```javascript
+// app/article/[slug]/data.js
+import getPageDetails from "@/lib/data"
+
+export const getCachedPageDetails = memoizeTesting(
+  getPageDetails,
+  {
+    duration: 3600
+    revalidateTags: (slug) => ['articles', slug],
+    log: ['datacache', 'verbose'],
+  }
+)
+
+// --------------------------------------------------
+// app/article/[slug]/data.js
+import { getCachedPageDetails } from './data' 
+
+export default async function Page({ params }) {
+  const res = await getPageData(params.slug) // 3600 BGR + ODR
+  return (
+    ...
+  )
+}
+
+```
+
+
 Read more about unstable_cache [here](https://alfonsusardani.notion.site/unstable_cache-from-next-cache-f300b3184d6a472ea5282543d50b9f02)
