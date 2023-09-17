@@ -22,13 +22,17 @@ const cachedFn = memoize(
     duration: 60,
     // For next's revalidateTags() purposes. 
     revalidateTags: (slug) => ['articles', slug], 
-    // Enable logs to see timer or whether it triggers ODR or BR
-    log:['dedupe' , 'datacache' , 'verbose'],
     // Extra cache identifier to make cache unique from others
     additionalCacheKey: ['articles'],
+
+    // Enable logs to see timer or whether it triggers ODR or BR
+    log:['dedupe' , 'datacache' , 'verbose'],
+    // Add custom id for logging
+    logiD: "Query Data"
 
     // `revalidateTags` and `additionalCache` can also receive 
     //   callbacks to retrieve the slug from the primary function 
   } 
 )
 ```
+Read more about unstable_cache [here](https://alfonsusardani.notion.site/unstable_cache-from-next-cache-f300b3184d6a472ea5282543d50b9f02)
