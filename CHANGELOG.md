@@ -1,5 +1,11 @@
 # nextjs-better-unstable-cache
 
+## 0.1.12
+
+### Patch Changes
+
+- improve readme
+
 ## 0.1.11
 
 ### Patch Changes

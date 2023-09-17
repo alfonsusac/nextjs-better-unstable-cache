@@ -12,10 +12,7 @@ npm i nextjs-better-unstable-cache
 import { memoize } from 'nextjs-better-unstable-cache' 
 
 const cachedFn = memoize(
-  async (slug: string) => {
-    const data = await db.query('...', slug)
-    return data
-  },
+  async (slug) =>  await db.query('...', slug),
   {
     // Enable persistance between requests, default true
     persist: true, 
