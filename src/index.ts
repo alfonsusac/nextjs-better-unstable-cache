@@ -108,7 +108,7 @@ export function memoize<P extends unknown[], R>(
       let time = audit2.getSec()
       console.log(
           `${chalk.hex('#FFB713').bold("Memoization")} - `
-        + `${chalk.hex('A0AFBF')(`${logID}${cb.name}`)} ${chalk.hex('#FFC94E').bold(renderCacheHit ? "MISS" : "HIT")} `
+        + `${chalk.hex('A0AFBF')(`${logID}${cb.name}`)} ${chalk.hex('#FFC94E').bold(renderCacheHit ? "HIT" : "MISS")} `
         + `${chalk.hex('A0AFBF')(time.toPrecision(3) + 's')} `
       )
       renderCacheHit = false
