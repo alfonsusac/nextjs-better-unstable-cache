@@ -52,7 +52,7 @@ export const getCachedPageDetails = memoizeTesting(
 )
 
 // --------------------------------------------------
-// app/article/[slug]/data.js
+// app/article/[slug]/page.jsx
 import { getCachedPageDetails } from './data' 
 
 export default async function Page({ params }) {
