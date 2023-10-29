@@ -6,7 +6,7 @@ import type { cache as cacheType } from "react/canary.d.ts"
 
 type Callback<Parameters extends unknown[], ReturnType> = (...args: Parameters) => ReturnType | Promise<ReturnType>
 
-type MemoizePropType<Parameters extends unknown[]> = {
+export type MemoizeOptionType<Parameters extends unknown[]> = {
   persist?: boolean,
   duration?: number,
   log?: ('dedupe' | 'datacache' | 'verbose')[],
@@ -21,7 +21,7 @@ type MemoizePropType<Parameters extends unknown[]> = {
 
 export function memoize<P extends unknown[], R>(
   cb: Callback<P, R>,
-  opts?: MemoizePropType<P>
+  opts?: MemoizeOptionType<P>
 ) {
   const { // default values
     persist = true,

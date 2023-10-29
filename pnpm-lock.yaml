@@ -9,13 +9,13 @@ dependencies:
     specifier: ^4.1.2
     version: 4.1.2
   next:
-    specifier: ^13.4.19
-    version: 13.4.19(react-dom@18.2.0)(react@18.3.0-canary-bbc8530ed-20230912)
+    specifier: '>=13.4'
+    version: 13.4.19(react-dom@18.2.0)(react@18.3.0-canary-8039e6d0b-20231026)
   react:
     specifier: next
-    version: 18.3.0-canary-bbc8530ed-20230912
+    version: 18.3.0-canary-8039e6d0b-20231026
   typescript:
-    specifier: ^5.2.2
+    specifier: '>=5.2.2'
     version: 5.2.2
 
 devDependencies:
@@ -1332,7 +1332,7 @@ packages:
     hasBin: true
     dev: false
 
-  /next@13.4.19(react-dom@18.2.0)(react@18.3.0-canary-bbc8530ed-20230912):
+  /next@13.4.19(react-dom@18.2.0)(react@18.3.0-canary-8039e6d0b-20231026):
     resolution: {integrity: sha512-HuPSzzAbJ1T4BD8e0bs6B9C1kWQ6gv8ykZoRWs5AQoiIuqbGHHdQO7Ljuvg05Q0Z24E2ABozHe6FxDvI6HfyAw==}
     engines: {node: '>=16.8.0'}
     hasBin: true
@@ -1352,9 +1352,9 @@ packages:
       busboy: 1.6.0
       caniuse-lite: 1.0.30001533
       postcss: 8.4.14
-      react: 18.3.0-canary-bbc8530ed-20230912
-      react-dom: 18.2.0(react@18.3.0-canary-bbc8530ed-20230912)
-      styled-jsx: 5.1.1(react@18.3.0-canary-bbc8530ed-20230912)
+      react: 18.3.0-canary-8039e6d0b-20231026
+      react-dom: 18.2.0(react@18.3.0-canary-8039e6d0b-20231026)
+      styled-jsx: 5.1.1(react@18.3.0-canary-8039e6d0b-20231026)
       watchpack: 2.4.0
       zod: 3.21.4
     optionalDependencies:
@@ -1537,18 +1537,18 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /react-dom@18.2.0(react@18.3.0-canary-bbc8530ed-20230912):
+  /react-dom@18.2.0(react@18.3.0-canary-8039e6d0b-20231026):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
       loose-envify: 1.4.0
-      react: 18.3.0-canary-bbc8530ed-20230912
+      react: 18.3.0-canary-8039e6d0b-20231026
       scheduler: 0.23.0
     dev: false
 
-  /react@18.3.0-canary-bbc8530ed-20230912:
-    resolution: {integrity: sha512-tR97lUv82gWU/or8y6UeENZWzbq+IB79gEV/5YUuR7Zbx+NzLouNML25YiUv3TjoyhDeqcRddhU4Tfiw7iSABQ==}
+  /react@18.3.0-canary-8039e6d0b-20231026:
+    resolution: {integrity: sha512-vlVdzo0PJiwshpfpMSxB4iirygntWJ8AD3nMetQBp6T8YHLv7WMRqMOfna9wn5GMXRJcUw9paQklNiOVGP68ag==}
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
@@ -1827,7 +1827,7 @@ packages:
       min-indent: 1.0.1
     dev: true
 
-  /styled-jsx@5.1.1(react@18.3.0-canary-bbc8530ed-20230912):
+  /styled-jsx@5.1.1(react@18.3.0-canary-8039e6d0b-20231026):
     resolution: {integrity: sha512-pW7uC1l4mBZ8ugbiZrcIsiIvVx1UmTfw7UkC3Um2tmfUq9Bhk8IiyEIPl6F8agHgjzku6j0xQEZbfA5uSgSaCw==}
     engines: {node: '>= 12.0.0'}
     peerDependencies:
@@ -1841,7 +1841,7 @@ packages:
         optional: true
     dependencies:
       client-only: 0.0.1
-      react: 18.3.0-canary-bbc8530ed-20230912
+      react: 18.3.0-canary-8039e6d0b-20231026
     dev: false
 
   /supports-color@5.5.0:

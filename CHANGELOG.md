@@ -1,5 +1,19 @@
 # nextjs-better-unstable-cache
 
+## 1.0.0
+
+### Major Changes
+
+- Changed peer dependency of the project and publish the source code too for transparency
+
+  Breaking change: It might break some things regarding the node_modules and how it behaves when imported
+
+  Why: So that I dont have to update next version everytime they updates and so that you guys can see the source code in the IDE and adapt accordingly
+
+  How: Just check everything works perfectly when installed.
+
+  - Also fixed readme.md
+
 ## 0.1.12
 
 ### Patch Changes

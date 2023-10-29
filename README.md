@@ -8,6 +8,9 @@ carries to this library.
 ```
 npm i nextjs-better-unstable-cache
 ```
+```
+npm i nextjs-better-unstable-cache
+```
 ```javascript
 import { memoize } from 'nextjs-better-unstable-cache' 
 
@@ -25,7 +28,7 @@ const cachedFn = memoize(
 
     // Enable logs to see timer or whether it triggers ODR or BR
     log:['dedupe' , 'datacache' , 'verbose'],
-    // Add custom id for logging
+    // Add custom string for logging
     logID: "Query Data"
 
     // `revalidateTags` and `additionalCache` can also receive 
@@ -39,8 +42,9 @@ const cachedFn = memoize(
 ```javascript
 // app/article/[slug]/data.js
 import getPageDetails from "@/lib/data"
+import { memoize } from 'nextjs-better-unstable-cache' 
 
-export const getCachedPageDetails = memoizeTesting(
+export const getCachedPageDetails = memoize(
   getPageDetails,
   {
     duration: 3600
@@ -49,12 +53,12 @@ export const getCachedPageDetails = memoizeTesting(
   }
 )
 
-// --------------------------------------------------
+// ---
 // app/article/[slug]/page.jsx
 import { getCachedPageDetails } from './data' 
 
 export default async function Page({ params }) {
-  const res = await getPageData(params.slug) // 3600 BGR + ODR
+  const res = await getCachedPageDetails(params.slug) // 3600 BGR + ODR
   return (
     ...
   )
