@@ -23,6 +23,12 @@ export function memoize<P extends unknown[], R>(
   cb: Callback<P, R>,
   opts?: MemoizeOptionType<P>
 ) {
+  if (typeof cache === "undefined" || typeof unstable_cache === "undefined") {
+    return async (...args: P) => {
+        return cb(...args);
+    };
+  }
+  
   const { // default values
     persist = true,
     duration = Infinity,
