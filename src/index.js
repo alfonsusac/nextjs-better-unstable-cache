@@ -51,7 +51,7 @@ import { cache } from "react";
 **/
 export function memoize(cb, opts) {
     var _this = this;
-    if (typeof cache === "undefined" || typeof unstable_cache === "undefined") {
+    if (typeof cache === "undefined" || typeof unstable_cache === "undefined" || typeof window !== "undefined") {
         return function () {
             var args = [];
             for (var _i = 0; _i < arguments.length; _i++) {

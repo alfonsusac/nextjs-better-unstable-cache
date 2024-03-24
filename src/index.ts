@@ -23,7 +23,8 @@ export function memoize<P extends unknown[], R>(
   cb: Callback<P, R>,
   opts?: MemoizeOptionType<P>
 ) {
-  if (typeof cache === "undefined" || typeof unstable_cache === "undefined") {
+  if (typeof cache === "undefined" || typeof unstable_cache === "undefined" || typeof window !== "undefined") {
+    // Fallback to the original function if there's no caching functions (ex. on react native), or if it's running on the client side
     return async (...args: P) => {
         return cb(...args);
     };
