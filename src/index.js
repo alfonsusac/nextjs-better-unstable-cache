@@ -51,6 +51,19 @@ import { cache } from "react";
 **/
 export function memoize(cb, opts) {
     var _this = this;
+    if (typeof cache === "undefined" || typeof unstable_cache === "undefined" || typeof window !== "undefined") {
+        return function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
+            }
+            return __awaiter(_this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, cb.apply(void 0, args)];
+                });
+            });
+        };
+    }
     var _a = opts !== null && opts !== void 0 ? opts : {}, // default values
     _b = _a.persist, // default values
     persist = _b === void 0 ? true : _b, _c = _a.duration, duration = _c === void 0 ? Infinity : _c, _d = _a.log, log = _d === void 0 ? [] : _d, revalidateTagsFn = _a.revalidateTags, additionalCacheKeyFn = _a.additionalCacheKey;

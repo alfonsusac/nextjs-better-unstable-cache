@@ -12,7 +12,8 @@ export type MemoizeOptionType<Parameters extends unknown[]> = {
   log?: ('dedupe' | 'datacache' | 'verbose')[],
   logid?: string
   revalidateTags?: ((...params: Parameters) => string[]) | string[],
-  additionalCacheKey?: ((...params: Parameters) => string[]) | string[]
+  additionalCacheKey?: ((...params: Parameters) => string[]) | string[],
+  suppressWarnings?: boolean
 }
 
 /**   ###  MEMOIZE: unstable_cache() + cache()
@@ -23,6 +24,25 @@ export function memoize<P extends unknown[], R>(
   cb: Callback<P, R>,
   opts?: MemoizeOptionType<P>
 ) {
+  if (typeof window !== "undefined") {
+    // Fallback to original function if window is defined (client side)
+    if (!opts?.suppressWarnings) {
+      console.warn("⚠️ Memoize: this function will not work in the client environment.")
+    }
+    return async (...args: P) => {
+      return cb(...args)
+    };
+  }
+  if (typeof cache === "undefined" && typeof unstable_cache === "undefined") {
+    // Fallback to the original function if there's no caching functions (ex. on react native)
+    if (!opts?.suppressWarnings) {
+      console.warn("⚠️ Memoize: cache or unstable_cache function not found. Falling back to original function")
+    }
+    return async (...args: P) => {
+        return cb(...args);
+    };
+  }
+  
   const { // default values
     persist = true,
     duration = Infinity,
