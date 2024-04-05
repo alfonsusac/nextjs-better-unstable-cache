@@ -1,5 +1,11 @@
 # nextjs-better-unstable-cache
 
+## 1.1.0
+
+### Minor Changes
+
+- Warn usage in client and lack of cache function, also option to suppress warinng.
+
 ## 1.0.0
 
 ### Major Changes
