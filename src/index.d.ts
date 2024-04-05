@@ -6,6 +6,7 @@ export type MemoizeOptionType<Parameters extends unknown[]> = {
     logid?: string;
     revalidateTags?: ((...params: Parameters) => string[]) | string[];
     additionalCacheKey?: ((...params: Parameters) => string[]) | string[];
+    suppressWarnings?: boolean;
 };
 /**   ###  MEMOIZE: unstable_cache() + cache()
          A way to generalize the data caching function in Next.js

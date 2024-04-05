@@ -51,7 +51,28 @@ import { cache } from "react";
 **/
 export function memoize(cb, opts) {
     var _this = this;
-    if (typeof cache === "undefined" || typeof unstable_cache === "undefined" || typeof window !== "undefined") {
+    if (typeof window !== "undefined") {
+        // Fallback to original function if window is defined (client side)
+        if (!(opts === null || opts === void 0 ? void 0 : opts.suppressWarnings)) {
+            console.warn("⚠️ Memoize: this function will not work in the client environment.");
+        }
+        return function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
+            }
+            return __awaiter(_this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, cb.apply(void 0, args)];
+                });
+            });
+        };
+    }
+    if (typeof cache === "undefined" && typeof unstable_cache === "undefined") {
+        // Fallback to the original function if there's no caching functions (ex. on react native)
+        if (!(opts === null || opts === void 0 ? void 0 : opts.suppressWarnings)) {
+            console.warn("⚠️ Memoize: cache or unstable_cache function not found. Falling back to original function");
+        }
         return function () {
             var args = [];
             for (var _i = 0; _i < arguments.length; _i++) {

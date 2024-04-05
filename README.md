@@ -8,9 +8,6 @@ carries to this library.
 ```
 npm i nextjs-better-unstable-cache
 ```
-```
-npm i nextjs-better-unstable-cache
-```
 ```javascript
 import { memoize } from 'nextjs-better-unstable-cache' 
 
