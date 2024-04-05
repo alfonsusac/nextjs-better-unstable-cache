@@ -31,6 +31,10 @@ const cachedFn = memoize(
     // Add custom string for logging
     logID: "Query Data"
 
+    // Suppress warning if used in client side or 
+    // . without caching function
+    suppressWarnings: true // default fals
+
     // `revalidateTags` and `additionalCache` can also receive 
     //   callbacks to retrieve the slug from the primary function 
   } 
