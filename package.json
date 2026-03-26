@@ -36,8 +36,7 @@
   "scripts": {
     "build": "tsc",
     "changeset": "changeset",
-    "bump-version": "changeset version",
-    "publish": "changeset publish"
+    "bump-version": "changeset version"
   },
   "peerDependencies": {
     "next": ">=13.4",
