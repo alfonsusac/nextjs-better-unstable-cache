@@ -1,4 +1,4 @@
-import chalk from "chalk"
+import { ansis } from "ansis"
 import { unstable_cache } from "next/cache"
 import { cache } from "react"
 //@ts-expect-error
@@ -92,13 +92,13 @@ export function memoize<P extends unknown[], R>(
           const time = audit!.getSec()
           const isSame = oldData === data
           console.log(
-              `${chalk.hex('AA7ADB').bold("Data Cache")} - `
-            + `${chalk.hex('A0AFBF')(`${logID}${cb.name}`)} ${chalk.hex('#AA7ADB').bold(dataCacheMiss ? "MISS" : "HIT")} `
-            + `${chalk.hex('A0AFBF')(time.toPrecision(3) + 's')} `
-            + `${chalk.hex('AA7ADB').bold(dataCacheMiss ? isSame ? 'background-revalidation' : 'on-demand revalidation' : "")} `
+              `${ansis.hex('AA7ADB').bold("Data Cache")} - `
+            + `${ansis.hex('A0AFBF')(`${logID}${cb.name}`)} ${ansis.hex('#AA7ADB').bold(dataCacheMiss ? "MISS" : "HIT")} `
+            + `${ansis.hex('A0AFBF')(time.toPrecision(3) + 's')} `
+            + `${ansis.hex('AA7ADB').bold(dataCacheMiss ? isSame ? 'background-revalidation' : 'on-demand revalidation' : "")} `
           )
           if (logVerbose)
-            console.log(`${chalk.hex('6A7C8E').bold(` └ ${cb.name ?? "Anon Func"} ${JSON.stringify(args)}`)}`)
+            console.log(`${ansis.hex('6A7C8E').bold(` └ ${cb.name ?? "Anon Func"} ${JSON.stringify(args)}`)}`)
           oldData = data
           return data
 
@@ -127,9 +127,9 @@ export function memoize<P extends unknown[], R>(
       let data = await cachedFn(...args)
       let time = audit2.getSec()
       console.log(
-          `${chalk.hex('#FFB713').bold("Memoization")} - `
-        + `${chalk.hex('A0AFBF')(`${logID}${cb.name}`)} ${chalk.hex('#FFC94E').bold(renderCacheHit ? "HIT" : "MISS")} `
-        + `${chalk.hex('A0AFBF')(time.toPrecision(3) + 's')} `
+          `${ansis.hex('#FFB713').bold("Memoization")} - `
+        + `${ansis.hex('A0AFBF')(`${logID}${cb.name}`)} ${ansis.hex('#FFC94E').bold(renderCacheHit ? "HIT" : "MISS")} `
+        + `${ansis.hex('A0AFBF')(time.toPrecision(3) + 's')} `
       )
       renderCacheHit = false
       return data
