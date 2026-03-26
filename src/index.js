@@ -43,7 +43,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
-import { ansis } from "ansis";
+import ansis from "ansis";
 import { unstable_cache } from "next/cache";
 import { cache } from "react";
 /**   ###  MEMOIZE: unstable_cache() + cache()

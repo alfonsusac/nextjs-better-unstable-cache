@@ -1,4 +1,4 @@
-import { ansis } from "ansis"
+import ansis from "ansis"
 import { unstable_cache } from "next/cache"
 import { cache } from "react"
 //@ts-expect-error
@@ -31,7 +31,7 @@ export function memoize<P extends unknown[], R>(
     }
     return async (...args: P) => {
       return cb(...args)
-    };
+    }
   }
   if (typeof cache === "undefined" && typeof unstable_cache === "undefined") {
     // Fallback to the original function if there's no caching functions (ex. on react native)
@@ -39,10 +39,10 @@ export function memoize<P extends unknown[], R>(
       console.warn("⚠️ Memoize: cache or unstable_cache function not found. Falling back to original function")
     }
     return async (...args: P) => {
-        return cb(...args);
-    };
+      return cb(...args)
+    }
   }
-  
+
   const { // default values
     persist = true,
     duration = Infinity,
@@ -53,7 +53,7 @@ export function memoize<P extends unknown[], R>(
   const logDataCache = log.includes('datacache')
   const logDedupe = log.includes('dedupe')
   const logVerbose = log.includes('verbose')
-  const logID = opts?.logid ? `${opts.logid} ` : ''
+  const logID = opts?.logid ? `${ opts.logid } ` : ''
 
   let oldData: any
   let renderCacheHit: boolean
@@ -73,11 +73,11 @@ export function memoize<P extends unknown[], R>(
           revalidateTagsFn ?
             typeof revalidateTagsFn === 'function' ?
               revalidateTagsFn(...args) : revalidateTagsFn
-            : [];
-        const cacheKey = [cb.toString(), JSON.stringify(args), ...additionalCacheKey]
+            : []
+        const cacheKey = [ cb.toString(), JSON.stringify(args), ...additionalCacheKey ]
         const nextOpts = {
           revalidate: duration,
-          tags: ['all', ...revalidateTags]
+          tags: [ 'all', ...revalidateTags ]
         }
         if (logDataCache) {
           let dataCacheMiss = false
@@ -92,13 +92,13 @@ export function memoize<P extends unknown[], R>(
           const time = audit!.getSec()
           const isSame = oldData === data
           console.log(
-              `${ansis.hex('AA7ADB').bold("Data Cache")} - `
-            + `${ansis.hex('A0AFBF')(`${logID}${cb.name}`)} ${ansis.hex('#AA7ADB').bold(dataCacheMiss ? "MISS" : "HIT")} `
-            + `${ansis.hex('A0AFBF')(time.toPrecision(3) + 's')} `
-            + `${ansis.hex('AA7ADB').bold(dataCacheMiss ? isSame ? 'background-revalidation' : 'on-demand revalidation' : "")} `
+            `${ ansis.hex('AA7ADB').bold("Data Cache") } - `
+            + `${ ansis.hex('A0AFBF')(`${ logID }${ cb.name }`) } ${ ansis.hex('#AA7ADB').bold(dataCacheMiss ? "MISS" : "HIT") } `
+            + `${ ansis.hex('A0AFBF')(time.toPrecision(3) + 's') } `
+            + `${ ansis.hex('AA7ADB').bold(dataCacheMiss ? isSame ? 'background-revalidation' : 'on-demand revalidation' : "") } `
           )
           if (logVerbose)
-            console.log(`${ansis.hex('6A7C8E').bold(` └ ${cb.name ?? "Anon Func"} ${JSON.stringify(args)}`)}`)
+            console.log(`${ ansis.hex('6A7C8E').bold(` └ ${ cb.name ?? "Anon Func" } ${ JSON.stringify(args) }`) }`)
           oldData = data
           return data
 
@@ -106,9 +106,9 @@ export function memoize<P extends unknown[], R>(
           const data = await unstable_cache(
             async () => {
               return cb(...args)
-            }, [cb.toString(), JSON.stringify(args), ...additionalCacheKey], {
+            }, [ cb.toString(), JSON.stringify(args), ...additionalCacheKey ], {
             revalidate: duration,
-            tags: ['all', ...revalidateTags]
+            tags: [ 'all', ...revalidateTags ]
           }
           )()
           return data
@@ -127,9 +127,9 @@ export function memoize<P extends unknown[], R>(
       let data = await cachedFn(...args)
       let time = audit2.getSec()
       console.log(
-          `${ansis.hex('#FFB713').bold("Memoization")} - `
-        + `${ansis.hex('A0AFBF')(`${logID}${cb.name}`)} ${ansis.hex('#FFC94E').bold(renderCacheHit ? "HIT" : "MISS")} `
-        + `${ansis.hex('A0AFBF')(time.toPrecision(3) + 's')} `
+        `${ ansis.hex('#FFB713').bold("Memoization") } - `
+        + `${ ansis.hex('A0AFBF')(`${ logID }${ cb.name }`) } ${ ansis.hex('#FFC94E').bold(renderCacheHit ? "HIT" : "MISS") } `
+        + `${ ansis.hex('A0AFBF')(time.toPrecision(3) + 's') } `
       )
       renderCacheHit = false
       return data
