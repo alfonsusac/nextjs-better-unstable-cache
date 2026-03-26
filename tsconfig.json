@@ -7,11 +7,6 @@
     "strict": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    // "skipLibCheck": true,
-    // "resolveJsonModule": true,
-    // "isolatedModules": true,
-    // "jsx": "preserve",
-    // "incremental": true,
     "lib": [
       "dom",
       "dom.iterable",

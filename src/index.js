@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -43,7 +43,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
-import chalk from "chalk";
+import { ansis } from "ansis";
 import { unstable_cache } from "next/cache";
 import { cache } from "react";
 /**   ###  MEMOIZE: unstable_cache() + cache()
@@ -133,12 +133,12 @@ export function memoize(cb, opts) {
                         data = _b.sent();
                         time = audit.getSec();
                         isSame = oldData === data;
-                        console.log("".concat(chalk.hex('AA7ADB').bold("Data Cache"), " - ")
-                            + "".concat(chalk.hex('A0AFBF')("".concat(logID).concat(cb.name)), " ").concat(chalk.hex('#AA7ADB').bold(dataCacheMiss_1 ? "MISS" : "HIT"), " ")
-                            + "".concat(chalk.hex('A0AFBF')(time.toPrecision(3) + 's'), " ")
-                            + "".concat(chalk.hex('AA7ADB').bold(dataCacheMiss_1 ? isSame ? 'background-revalidation' : 'on-demand revalidation' : ""), " "));
+                        console.log("".concat(ansis.hex('AA7ADB').bold("Data Cache"), " - ")
+                            + "".concat(ansis.hex('A0AFBF')("".concat(logID).concat(cb.name)), " ").concat(ansis.hex('#AA7ADB').bold(dataCacheMiss_1 ? "MISS" : "HIT"), " ")
+                            + "".concat(ansis.hex('A0AFBF')(time.toPrecision(3) + 's'), " ")
+                            + "".concat(ansis.hex('AA7ADB').bold(dataCacheMiss_1 ? isSame ? 'background-revalidation' : 'on-demand revalidation' : ""), " "));
                         if (logVerbose)
-                            console.log("".concat(chalk.hex('6A7C8E').bold(" \u2514 ".concat((_a = cb.name) !== null && _a !== void 0 ? _a : "Anon Func", " ").concat(JSON.stringify(args)))));
+                            console.log("".concat(ansis.hex('6A7C8E').bold(" \u2514 ".concat((_a = cb.name) !== null && _a !== void 0 ? _a : "Anon Func", " ").concat(JSON.stringify(args)))));
                         oldData = data;
                         return [2 /*return*/, data];
                     case 2: return [4 /*yield*/, unstable_cache(function () { return __awaiter(_this, void 0, void 0, function () {
@@ -177,9 +177,9 @@ export function memoize(cb, opts) {
                     case 1:
                         data = _a.sent();
                         time = audit2.getSec();
-                        console.log("".concat(chalk.hex('#FFB713').bold("Memoization"), " - ")
-                            + "".concat(chalk.hex('A0AFBF')("".concat(logID).concat(cb.name)), " ").concat(chalk.hex('#FFC94E').bold(renderCacheHit ? "HIT" : "MISS"), " ")
-                            + "".concat(chalk.hex('A0AFBF')(time.toPrecision(3) + 's'), " "));
+                        console.log("".concat(ansis.hex('#FFB713').bold("Memoization"), " - ")
+                            + "".concat(ansis.hex('A0AFBF')("".concat(logID).concat(cb.name)), " ").concat(ansis.hex('#FFC94E').bold(renderCacheHit ? "HIT" : "MISS"), " ")
+                            + "".concat(ansis.hex('A0AFBF')(time.toPrecision(3) + 's'), " "));
                         renderCacheHit = false;
                         return [2 /*return*/, data];
                     case 2: return [4 /*yield*/, cachedFn.apply(void 0, args)];
