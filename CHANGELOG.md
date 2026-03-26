@@ -1,5 +1,11 @@
 # nextjs-better-unstable-cache
 
+## 1.1.2
+
+### Patch Changes
+
+- update deps and change chalk to ansis
+
 ## 1.1.0
 
 ### Minor Changes
