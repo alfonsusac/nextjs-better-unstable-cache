@@ -48,7 +48,7 @@ import { memoize } from 'nextjs-better-unstable-cache'
 export const getCachedPageDetails = memoize(
   getPageDetails,
   {
-    duration: 3600
+    duration: 3600,
     revalidateTags: (slug) => ['articles', slug],
     log: ['datacache', 'verbose'],
   }
